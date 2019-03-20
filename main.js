@@ -134,7 +134,7 @@ const filter = (array, callback) => {
     each(array,(value, index) => {
         if(callback(value, index)) {
             filteredArray.push(value);
-        };
+        }
     });
     return filteredArray;
 };
