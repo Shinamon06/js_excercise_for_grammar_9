@@ -129,7 +129,21 @@ console.log('map関数の戻り値：' + returnedValueOfMap);
  */
 
 // ここでfilter関数を作る
-
+const filter = (array, callback) => {
+    const filteredArray = [];
+    each(array,(value, index) => {
+        if(callback(value, index)) {
+            filteredArray.push(value);
+        };
+    });
+    return filteredArray;
+};
 
 // ここでfilter関数の挙動を確認する
+const arrayOfValue = [1, 2, 3, 4, 5];
+const valueOfFilter = filter(array, (value, index) => {
+    console.log('filter関数のコールバック関数内 index：' + index, '値：' + value);
+});
 
+console.log('filter関数の入力値' + arrayOfValue);
+console.log('filter関数の戻り値' + valueOfFilter);
