@@ -31,8 +31,21 @@
 
 // ここでeach関数を作る
 
+const each = (array, callback) => {
+    for(let i = 0; i < array.length; i++) {
+        callback(array[i], i);  
+    }
+};
 
 // ここでeach関数の挙動を確かめる
+
+const arrayOfEach = [1, 2, 3, 4];
+const returnedValueOfEach = each(arrayOfEach, (value, index) => {
+    console.log('each関数のコールバック関数内 index：' + index, '値' + value,);
+});
+
+console.log('each関数の入力値：' + arrayOfEach);
+console.log('each関数の戻り値：' + returnedValueOfEach);
 
 
 /**
@@ -64,8 +77,25 @@
 
 // ここでmap関数を実装する
 
+const map = (array, callback) => {
+    const newArray = [];
+    each(array, (value, index) => {
+        const newValue = callback(value, index);
+        newArray.push(newValue);
+    });
+    return newArray;
+};
 
 // ここでmap関数の挙動を確認する
+
+const arrayOfMap = [1, 2, 3];
+const returnedValueOfMap = map(arrayOfMap, (value, index) => {
+    console.log('map関数のコールバック関数内 index：' + index, '値:' + value,);
+    return value * 2;
+});
+
+console.log('map関数の入力値：' + arrayOfMap);
+console.log('map関数の戻り値：' + returnedValueOfMap);
 
 
 
